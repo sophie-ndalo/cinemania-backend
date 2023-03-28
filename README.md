@@ -36,34 +36,28 @@ The following controllers are used in the movie streaming app:
 
 UsersController
 The UsersController handles requests related to users. It contains the following actions:
-
 index: Returns a list of all users.
 show: Returns a specific user.
 create: Creates a new user.
 update: Updates a specific user.
 destroy: Deletes a specific user.
+
 MoviesController
 The MoviesController handles requests related to movies. It contains the following actions:
-
 index: Returns a list of all movies.
 show: Returns a specific movie.
 create: Creates a new movie.
 update: Updates a specific movie.
 destroy: Deletes a specific movie.
-ReviewsController
-The ReviewsController handles requests related to reviews. It contains the following actions:
-
-index: Returns a list of all reviews for a specific movie.
-show: Returns a specific review for a specific movie.
-create: Creates a new review for a specific movie.
-update: Updates a specific review for a specific movie.
-destroy: Deletes a specific review for a specific movie.
 
 # Routes
 The following routes are used in the movie streaming app:
 
 # Technology stack
+Ruby on rails
 
 # contributors
+Sophia Ndalo
 
-# licence# cinemania-backend
+# licence
+cinemania-backend

@@ -13,7 +13,6 @@ require "action_controller/railtie"
 require "action_view/railtie"
 # require "action_cable/engine"
 require "rails/test_unit/railtie"
-require "active_storage/engine"
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -23,6 +22,18 @@ module CinemaniaBackend
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0
+
+    require "active_storage/engine"
+
+
+    # config/initializers/cors.rb
+
+Rails.application.config.middleware.insert_before 0, Rack::Cors do
+  allow do
+    origins '*' # replace with the origin of your client application
+    resource '*', headers: :any, methods: [:get, :post, :put, :patch, :delete, :options, :head]
+  end
+end
 
     # Configuration for the application, engines, and railties goes here.
     #
@@ -35,6 +46,8 @@ module CinemaniaBackend
     # Only loads a smaller set of middleware suitable for API only apps.
     # Middleware like session, flash, cookies can be added back manually.
     # Skip views, helpers and assets when generating a new resource.
+    config.middleware.use ActionDispatch::Cookies
+    config.middleware.use ActionDispatch::Session::CookieStore
     config.api_only = true
   end
 end

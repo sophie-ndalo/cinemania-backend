@@ -43,6 +43,17 @@ class MoviesController < ApplicationController
     end
   end
 
+  def destroy
+    movie = Movie.find(params[:id])
+  
+    if movie.destroy
+      video_url = movie.video.attached? ? url_for(movie.video) : nil
+      render json: { movie: movie, video_url: video_url }, status: :ok
+    else
+      render json: { error: "Movie not found" }, status: :not_found
+    end
+  end
+  
   private
 
   def movie_params
